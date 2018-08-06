@@ -11,46 +11,46 @@
   include("include/firstPage.php");
   include("include/connDB.php");?>
   <form method="POST">
-    <div class="form-row"><?php echo $dbaseErr;?>how are you
+    <div class="form-row"><?php echo $dbaseErr;?>
       <div class="form-group col-lg-4">
         <label for="firstName">First Name: </label>
-        <input type="text" value="<?php echo $firstName;?>" class="form-control" id="firstName" name="firstName"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['firstName'])){echo firstName($firstNameErr);}}?>
+        <input type="text" value="<?php echo $firstName;?>" class="form-control" id="firstName" name="firstName">
       </div>
       <div class="form-group col-lg-4">
         <label for="secName">Second Name:</label>
-        <input type="text" name="secName" value="<?php echo $secName;?>" id="secName" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['secName'])){echo secName($secNameErr);}}?>
+        <input type="text" name="secName" value="<?php echo $secName;?>" id="secName" class="form-control">
       </div>
       <div class="form-group col-lg-4">
         <label for="thirdName">Third Name:</label>
-        <input type="text" value="<?php echo $thirdName;?>" name="thirdName" id="thirdName" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['thirdName'])){echo thirdName($thirdNameErr);}}?>
+        <input type="text" value="<?php echo $thirdName;?>" name="thirdName" id="thirdName" class="form-control">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-lg">
         <label for="subCounty">Residence Sub-County:</label>
-        <input type="text" name="subCounty" value="<?php echo $subCounty;?>" id="subCounty" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['subCounty'])){echo subCounty($subCountyErr);}}?>
+        <input type="text" name="subCounty" value="<?php echo $subCounty;?>" id="subCounty" class="form-control">
       </div>
       <div class="form-group col-lg">
         <label for="division">Residence Division:</label>
-        <input type="text" value="<?php echo $division;?>" name="division" id="division" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['division'])){echo division($divisionErr);}}?>
+        <input type="text" value="<?php echo $division;?>" name="division" id="division" class="form-control">
       </div>
       <div class="form-group col-lg">
         <label for="estate">Residence Estate:</label>
-        <input type="text" name="estate" value="<?php echo $estate;?>" id="estate" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['estate'])){echo estate($estateErr);}}?>
+        <input type="text" name="estate" value="<?php echo $estate;?>" id="estate" class="form-control">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-lg">
         <label for="idNo">National ID No: </label>
-        <input type="number" name="idNo" value="<?php echo $idNo;?>" id="idNo" class="form-control"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['idNo'])){echo idNo($idNoErr);}}echo $idNoErr;?>
+        <input type="number" name="idNo" value="<?php echo $idNo;?>" id="idNo" class="form-control">
       </div>
       <div class="form-group col-lg">
         <label for="email">Email Address: </label>
-        <input type="email" class="form-control" value="<?php echo $email;?>" name="email" id="email"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['email'])){echo emailError($emailError);}}?>
+        <input type="email" class="form-control" value="<?php echo $email;?>" name="email" id="email">
       </div>
       <div class="form-group col-lg">
         <label for="phoneNo">Phone Number: </label>
-        <input type="number" value="<?php echo $phoneNo;?>" class="form-control" name="phoneNo" id="phoneNo" placeholder="Format is 2547********"><br><?php if(isset($_POST['submitForm1'])){if(empty($_POST['phoneNo'])){echo phoneNo($phoneNoErr);}} echo $phoneNoErr;?>
+        <input type="number" value="<?php echo $phoneNo;?>" class="form-control" name="phoneNo" id="phoneNo" placeholder="Format is 2547********">
       </div>
     </div><hr>
     <div class="form-row">
@@ -64,7 +64,7 @@
           <input type="radio" <?php if($maritalStatus == "single"){echo "checked";}?> id="single" value="single" name="maritalStatus" class="custom-control-input">
           <label class="custom-control-label" for="single">Single</label>
         </div>
-      </div><br><?php if(isset($_POST['submitForm1'])){if(!isset($_POST['maritalStatus'])){echo maritalStatus($maritalStatusErr);}}?>
+      </div>
     </div>
     <button type="submit" name="submitForm1" class="btn btn-defualt btn-outline-dark float-right">Next  >></button>
   </form>
