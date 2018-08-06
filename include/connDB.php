@@ -13,8 +13,9 @@ if (mysqli_query($conn, $sqlBorrower)) {
       $formNo = false;
       $unique = false;
       while (!$unique) {
-        if ($count > $numRows) {
-          echo "no more unique numbers";
+        if ($count > $numRows+5) {
+          echo "<div class='alert alert-danger'>There are no more uniquer numbers in the given range.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden=true>&times;</span>  </button>
+          </div>";
           die();
         }
         $formNo = rand(1, 5);
@@ -25,13 +26,13 @@ if (mysqli_query($conn, $sqlBorrower)) {
         $count++;
       }
       return $formNo;
-    } echo formNo($conn, $numRows);
+    } formNo($conn, $numRows); $formNo = formNo($conn, $numRows);
   } else {
     $formNo = rand(1, 5);
   }
 
 
-if (!empty($_POST['firstName']) && !empty($_POST['secName']) && !empty($_POST['thirdName']) && !empty($_POST['subCounty']) && !empty($_POST['division']) && !empty($_POST['estate']) && !empty($_POST['idNo']) && mb_strlen($idNo) == 8 && mb_strlen($phoneNo) == 9 && !empty($_POST['email']) && !empty($_POST['phoneNo']) && !empty($_POST['maritalStatus'])) {
+if (!empty($_POST['firstName']) && !empty($_POST['secName']) && !empty($_POST['thirdName']) && !empty($_POST['subCounty']) && !empty($_POST['division']) && !empty($_POST['estate']) && $emailNumRows == 0 && $idNumRows == 0 && !empty($_POST['idNo']) && mb_strlen($idNo) == 8 && mb_strlen($phoneNo) == 9 && !empty($_POST['email']) && !empty($_POST['phoneNo']) && !empty($_POST['maritalStatus'])) {
     $sql = "INSERT INTO borrowerInfo (formNo, firstName, secName, thirdName, subCounty, division, estate, idNo, email, phoneNo, maritalStatus) VALUES ('$formNo', '$firstName', '$secName', '$thirdName', '$subCounty', '$division', '$estate', '$idNo', '$email', '$phoneNo', '$maritalStatus')";
 
     if (isset($_POST['submitForm1'])) {
