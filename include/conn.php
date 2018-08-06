@@ -2,10 +2,18 @@
 $serverName = "localhost";
 $userName = "root";
 $password = "";
-$credoLink = "credoLink";
+$conn = '';
 
-$conn = mysqli_connect($serverName, $userName, $password, $credoLink);
+$conn1 = mysqli_connect($serverName, $userName, $password);
 
-if (!$conn) {
-  echo mysqli_error($conn);
+if (!$conn1) {
+  echo mysqli_error($conn1);
+}
+
+$sql = mysqli_query($conn1, "CREATE DATABASE IF NOT EXISTS credoLink;");
+
+if ($sql) {
+  $conn = mysqli_connect($conn, $sql);
+} else {
+  echo 'database problem'.mysqli_error($conn);
 }
