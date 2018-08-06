@@ -152,4 +152,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       return $maritalStatusErr;
     }
   }
+
+  $emailSql = mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE email = '$email'");
+  $idSql = mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE idNo = '$idNo'");
+  $emailNumRows = mysqli_num_rows($emailSql);
+  $idNumRows = mysqli_num_rows($idSql);
+  $emailNumRowsErr = $idNumrowsErr = '';
+
+  if ($emailNumRows > 0) {
+    $emailNumRowsErr .= '
+    <div class="alert alert-danger">The email already exists. Try another one.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    </div>
+    ';
+  }
+
+  if ($idNumRows > 0) {
+    $idNumrowsErr .= '
+    <div class="alert alert-danger">The ID number already exists.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    </div>
+    ';
+  } else {
+    #echo "problem id".mysqli_error($conn);
+  }
 }
