@@ -3,11 +3,17 @@
 <head>
   <title>Take a photo</title>
   <?php
-  require_once("../include/bootstrapLinks.html");
+  include("../include/bootstrapLinks.html");
   include("../include/conn.php");
   ?>
+  <style></style>
 </head>
-<body class="jumbotron">
-  <h1 class="alert alert-danger">How are you</h1>
+<body class="jumbotron container">
+  <div class="booth">
+    <video id="video" width="400" height="300" src=""></video><br>
+    <a href="#" id="capture" class="captureButton">Take photo</a><br>
+    <canvas id="canvas" width="400" height="300"><img scr="#" id="photo"></canvas>
+  </div>
+  <script src="photo.js"></script>
 </body>
 </html>
