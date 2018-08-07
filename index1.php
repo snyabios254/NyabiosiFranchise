@@ -2,9 +2,15 @@
 <html>
 <head>
 <title>Nyabiosi Frachise</title>
-<?php include("include/bootstrapLinks.html");?>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="bootstrap-4.1.2-dist/css/bootstrap.min.css">
+<script src="bootstrap-4.1.2-dist/jquery.min.js"></script>
+<script src="bootstrap-4.1.2-dist/popper.min.js"></script>
+<script src="bootstrap-4.1.2-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
-<body class="container jumbotron">i pulled this one today hope so it works
+<body class="container jumbotron">
   <?php
   include("include/conn.php");
   include("include/header.html");
