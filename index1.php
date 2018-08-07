@@ -4,7 +4,7 @@
 <title>Nyabiosi Frachise</title>
 <?php include("include/bootstrapLinks.html");?>
 </head>
-<body class="container jumbotron">
+<body class="container jumbotron">i pulled this one today hope so it works
   <?php
   include("include/conn.php");
   include("include/header.html");
