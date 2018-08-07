@@ -10,6 +10,7 @@ include("../include/conn.php");
 <body class="jumbotron container">
 <?php include("../include/header.html");
 include("singleDB.php");
+include("singleConn.php");
 ?>
 <form method="POST">
   <label class="badge badge-success">First guarantor information</label>

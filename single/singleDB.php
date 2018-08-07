@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } else {
     $grFirstNameErr .= '
     <div class="alert alert-danger">Guarantor first name is required.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     ';
   }
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } else {
     $grSecNameErr .= '
     <div class="alert alert-danger">Guarantor second name is required.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     ';
   }
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } else {
     $grThirdNameErr .= '
     <div class="alert alert-danger">Guarantor third name is required.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     ';
   }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $grIdNo = mysqli_real_escape_string($conn, $_POST['grIdNo']);
   } else {
     $grIdNoErr .= '
-    <div class="alert alert-danger">Guarantor ID number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    <div class="alert alert-danger">Guarantor ID number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     ';
   }
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } else {
     $gr2FirstNameErr .= '
     <div class="alert alert-danger">Guarantor two first name is required.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     ';
   }
