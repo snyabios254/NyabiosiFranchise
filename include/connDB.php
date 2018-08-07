@@ -14,7 +14,7 @@ if (mysqli_query($conn, $sqlBorrower)) {
       $unique = false;
       while (!$unique) {
         if ($count > $numRows+5) {
-          echo "<div class='alert alert-danger'>There are no more uniquer numbers in the given range.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden=true>&times;</span>  </button>
+          echo "<div class='alert alert-danger'>There are no more uniquer numbers in the given range.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden=true>&times;</span></button>
           </div>";
           die();
         }
