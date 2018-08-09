@@ -3,12 +3,12 @@
 <head>
 <title>CredoLink Frachise</title>
 <?php
-include("include/bootstrapLinks.html");
-include("include/conn.php");
-include("include/header.html");
+include("../include/bootstrapLinks.html");
+include("../include/conn.php");
 ?>
 </head>
 <body class="jumbotron container">
+  <?php include("../include/header.html");?>
   <form method="POST">
     <label class="badge badge-success">Spouse information</label>
     <div class="form-row">
