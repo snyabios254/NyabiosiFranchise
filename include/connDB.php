@@ -1,7 +1,7 @@
 <?php
 $sqlBorrower = "CREATE TABLE IF NOT EXISTS `credoLink`.`borrowerInfo` ( `formNo` INT(6) NOT NULL ,  `firstName` TEXT NOT NULL ,  `secName` TEXT NOT NULL ,  `thirdName` TEXT NOT NULL ,  `subCounty` TEXT NOT NULL ,  `division` TEXT NOT NULL ,  `estate` TEXT NOT NULL ,  `idNo` INT(8) NOT NULL ,  `email` VARCHAR(20) NOT NULL ,  `phoneNo` INT(9) NOT NULL , `maritalStatus` TEXT NOT NULL ) ENGINE = InnoDB;";
 
-$dbaseErr = '';
+$dbaseErr = $idNumrowsErr = $emailNumRowsErr = '';
 
 if (mysqli_query($conn, $sqlBorrower)) {
   $formNo = '';
@@ -18,7 +18,7 @@ if (mysqli_query($conn, $sqlBorrower)) {
           </div>";
           die();
         }
-        $formNo = rand(1, 5);
+        $formNo = rand(1, 10);
         $sql = mysqli_query($conn, "SELECT formNo FROM borrowerInfo WHERE formNo = '$formNo'");
         if (!mysqli_fetch_array($sql)) {
           $unique = true;
@@ -28,7 +28,7 @@ if (mysqli_query($conn, $sqlBorrower)) {
       return $formNo;
     } formNo($conn, $numRows); $formNo = formNo($conn, $numRows);
   } else {
-    $formNo = rand(1, 5);
+    $formNo = rand(1, 10);
   }
 
 
