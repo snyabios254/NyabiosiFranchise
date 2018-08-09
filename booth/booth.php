@@ -15,12 +15,15 @@
       <video id="video" width="500" height="300" src=""></video><br>
       <a href="#" id="capture" class="btn btn-info btn-block">Take photo</a>
     </div>
+    <form method="POST" id="formId">
     <div class="form-group col-lg border border-info rounded">
       <canvas id="canvas" width="500" height="300">
       <img scr="#" class="figure-img img-fluid rounded" id="photo"></canvas>
-      <button class="btn btn-info btn-block" href="#">Next >></button>
+      <input type="hidden" name="hiddenImage" id="hiddenImage">
+      <button class="btn btn-info btn-block" type="submit" name="submit" href="#">Next >></button>
     </div>
+    <form>
   </div>
-  <script src="photo.js"></script>
+  <script src="photo.js"></script><?php include("boothDB.php");?>
 </body>
 </html>
