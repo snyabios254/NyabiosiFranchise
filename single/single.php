@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  $formNo = 6;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +42,8 @@ include("singleConn.php");
       <input type="text" name="grPhoneNo" id="grPhoneNo" class="form-control" value="<?php echo $grPhoneNo;?>"><br><?php echo $grPhoneNoErr;?>
     </div>
   </div>
+  <p>Click <a href="#gr2Collapse" data-toggle="collapse">here</a> to enter guarantor two information(optional).</p>
+  <div class="collapse" id="gr2Collapse">
     <label class="badge badge-success">Second guarantor information(optional)</label>
     <div class="form-row">
       <div class="form-group col-lg">
@@ -63,6 +69,7 @@ include("singleConn.php");
         <input type="text" name="gr2PhoneNo" id="gr2PhoneNo" class="form-control" value="<?php echo $gr2PhoneNo;?>"><br><?php echo $gr2PhoneNoErr;?>
       </div>
     </div>
+  </div>
   <button type="submit" class="btn btn-outline-dark float-right" name="submit">Next >></button>
 </form>
 </body>
