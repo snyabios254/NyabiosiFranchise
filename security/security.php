@@ -4,6 +4,7 @@
 <title>CredoLink Frachise</title>
 <?php include("../include/bootstrapLinks.html");
   include("../include/conn.php");
+  include("securityDB.php");
 ?>
 </head>
 <body class="jumbotron container-fluid">
@@ -23,11 +24,11 @@
       <tbody>
         <tr>
           <th scope="row">1. </th>
-          <td><input class="form-control" type="text" name="assets1" value="<?php echo $assets1;?>"><?php echo $assets1Err;?></td>
-          <td><select class="custom-select"><?php include("select.html");?></select></td>
-          <td><input class="form-control" type="text" name="serialNo1" value="<?php echo $serialNo1?>"><?php echo $serialNo1Err;?></td>
-          <td><div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control" name="buyPrice1" type="number" aria-label="With textarea" value="<?php echo $buyPrice1;?>"></div><?php echo $buyPrice1Err;?></td>
-          <td><div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control" type="number" name="sellPrice1" value="<?php echo $sellPrice1;?>" aria-label="With textarea"></div><?php echo $sellPrice1Err;?></td>
+          <td><input class="form-control <?php echo $assets1Err;?>" type="text" name="assets1" value="<?php echo $assets1;?>"></td>
+          <td><select class="custom-select <?php echo  $year1Err;?>" name="year1" value="<?echo $year1;?>"><?php include("select.html");?></select></td>
+          <td><input class="form-control <?php echo $serialNo1Err;?>" type="text" name="serialNo1" value="<?php echo $serialNo1?>"></td>
+          <td><div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control <?php echo $buyPrice1Err;?>" name="buyPrice1" type="number" aria-label="With textarea" value="<?php echo $buyPrice1;?>"></div></td>
+          <td><div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control <?php echo $sellPrice1Err;?>" type="number" name="sellPrice1" value="<?php echo $sellPrice1;?>" aria-label="With textarea"></div></td>
         </tr>
         <tr>
           <th scope="row">2. </th>
