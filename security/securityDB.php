@@ -16,7 +16,7 @@ $assets4Err = $year4Err = $serialNo4Err = $buyPrice4Err = $sellPrice4Err = '';
 $assets5 = $year5 = $serialNo5 = $buyPrice5 = $sellPrice5 = '';
 $assets5Err = $year5Err = $serialNo5Err = $buyPrice5Err = $sellPrice5Err = '';
 
-$loanAmountErr = $loanAmount = $rateCheck = $rateCheckErr = '';
+$loanAmountErr = $loanAmount = $rateCheck = $rateCheckErr2 = '';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (!empty($_POST['assets1'])) {

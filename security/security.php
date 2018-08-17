@@ -1,5 +1,10 @@
 <?php
-$formNo = "345";
+session_start();
+if (isset($_SESSION['formNo'])) {
+  $formNo = $_SESSION['formNo'];
+} else {
+  header("location: ../index1.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,7 +81,6 @@ $formNo = "345";
         <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control <?php echo $loanAmountErr;?>" type="number" name="loanAmount" aria-label="With textarea" value="<?php echo $loanAmount;?>"></div>
       </div>
       <div class="form-group col-lg">
-
         <button class="btn btn-outline-dark float-right" type="submit" name="finish">Finish</button>
       </div>
     </div>
