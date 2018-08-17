@@ -1,8 +1,62 @@
 <?php
+$spFirstName = $spSecName = $spThirdName = $spIdNo = $spPhoneNo = '';
+$spFirstNameErr = $spSecNameErr = $spThirdNameErr = $spIdNoErr = $spPhoneNoErr = '';
+
 $grFirstName = $grSecName = $grThirdName = $grIdNo = $grPhoneNo = $gr2FirstName = $gr2SecName = $gr2ThirdName = $gr2IdNo = $gr2PhoneNo = '';
 $grFirstNameErr = $grSecNameErr = $grThirdNameErr = $grIdNoErr = $grPhoneNoErr = $gr2FirstNameErr = $gr2SecNameErr = $gr2ThirdNameErr = $gr2IdNoErr = $gr2PhoneNoErr = '';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (!empty($_POST['spFirstName'])) {
+    $spFirstName = mysqli_real_escape_string($conn, $_POST['spFirstName']);
+  } else {
+    $spFirstNameErr .= '
+    <div class="alert alert-danger">Spouse first name is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+
+  if (!empty($_POST['spSecName'])) {
+    $spSecName = mysqli_real_escape_string($conn, $_POST['spSecName']);
+  } else {
+    $spSecNameErr .= '
+    <div class="alert alert-danger">Spouse second name is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+
+  if (!empty($_POST['spThirdName'])) {
+    $spThirdName = mysqli_real_escape_string($conn, $_POST['spThirdName']);
+  } else {
+    $spThirdNameErr .= '
+    <div class="alert alert-danger">Spouse third name is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+
+  if (!empty($_POST['spIdNo'])) {
+    $spIdNo = mysqli_real_escape_string($conn, $_POST['spIdNo']);
+  } else {
+    $spIdNoErr .= '
+    <div class="alert alert-danger">Spouse ID number is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+
+  if (!empty($_POST['spPhoneNo'])) {
+    $spPhoneNo = mysqli_real_escape_string($conn, $_POST['spPhoneNo']);
+  } else {
+    $spPhoneNoErr .= '
+    <div class="alert alert-danger">Spouse phone number is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+  ###################################
+
   if (!empty($_POST['grFirstName'])) {
     $grFirstName = mysqli_real_escape_string($conn, $_POST['grFirstName']);
   } else {
