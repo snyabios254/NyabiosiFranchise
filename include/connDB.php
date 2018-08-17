@@ -31,16 +31,21 @@ if (mysqli_query($conn, $sqlBorrower)) {
     $formNo = rand(1, 10);
   }
 
-
 if (!empty($_POST['firstName']) && !empty($_POST['secName']) && !empty($_POST['thirdName']) && !empty($_POST['subCounty']) && !empty($_POST['division']) && !empty($_POST['estate']) && $emailNumRows == 0 && $idNumRows == 0 && !empty($_POST['idNo']) && mb_strlen($idNo) == 8 && mb_strlen($phoneNo) == 9 && !empty($_POST['email']) && !empty($_POST['phoneNo']) && !empty($_POST['maritalStatus'])) {
     $sql = "INSERT INTO borrowerInfo (formNo, firstName, secName, thirdName, subCounty, division, estate, idNo, email, phoneNo, maritalStatus) VALUES ('$formNo', '$firstName', '$secName', '$thirdName', '$subCounty', '$division', '$estate', '$idNo', '$email', '$phoneNo', '$maritalStatus')";
 
     if (isset($_POST['submitForm1'])) {
        if (mysqli_query($conn, $sql)) {
-         echo "successfull";
-       } else {
-         echo 'nah'.mysqli_error($conn);
-       }
-    }
-  } else {echo "something is wrong";}
-}
+         #echo "successfull";
+         $_SESSION['formNo'] = $formNo;
+         if ($_POST['maritalStatus'] == "married") {
+           if (isset($_SESSION['formNo'])) {
+             header("location: married/married.php");
+           } else {echo 'not able to login';}
+         } else {
+           if (isset($_SESSION['formNo'])) {
+             header("location: single/single.php");
+           } else {echo 'error occured';}
+         }
+       } else {echo 'nah'.mysqli_error($conn);}}
+  } else {echo "something is wrong";}}
