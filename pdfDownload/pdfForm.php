@@ -27,8 +27,24 @@ if (mysqli_num_rows($result) > 0) {
   }
 }
 
-function loanReturn () {
-  
+function loanReturn($tableLoans) {
+  $num = $tableLoans['loanAmount'];
+  $amountReturn = 140/100 * $num;
+  return $amountReturn;
+}
+
+function dataAdd($tableAssets) {
+  $date = $tableAssets['date'];
+  $finalDate = strtotime($date.' +30 days');
+  $final = date("d-m-Y H:i:s", $finalDate);
+  return $final;
+}
+
+function timeForm($tableAssets) {
+  $date = $tableAssets['date'];
+  $finalDate = strtotime($date.' +0 days');
+  $final = date("d-m-Y H:i:s", $finalDate);
+  return $final;
 }
 
 include("wordsNum.php");
@@ -88,8 +104,71 @@ $html = '
       </ol>
       <p>'.$data.'</p>
       <p><span style="text-decoration: underline;"><b>BORROWER DECLARATION</b><span></p>
-      <p>I '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' the borrower in event of default agree to immediately pay all  costs by Credolink Enterprice Ltd in enforcing this agreement. I agree to abide to all the rules, policies and regulations of Credolink Enterprice Ltd. I agree to pay my total loan of Ksh. ..........(put amount here auto calculate) in words'.convert_number_to_words().'</p>
+      <p>I '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' the borrower in event of default agree to immediately pay all  costs by Credolink Enterprice Ltd in enforcing this agreement. I agree to abide to all the rules, policies and regulations of Credolink Enterprice Ltd. I agree to pay my total loan of <b>Ksh. '.loanReturn($tableLoans).' </b>in words <b>'.convert_number_to_words(loanReturn($tableLoans)).' only</b>.</p>
+      <p>Further I the borrower and my spouse where applicable have have hereby agreed and authorized Credolink Enterprise Ltd to sell the goods or property given as security by public auction through auctioneers who shall recover their costs and pay the outstanding amount and interest to the company.</p>
+      <p>Date given to the borrower <b>'.timeForm($tableAssets).'</b><p>
+      <p>The last date of return with 40% interest <b>'.dataAdd($tableAssets).'</b><p>
+      <p><b>
+      NB: IF EXCEEDING THE RETURN LIMIT I WILL BE PAYING 25% EACH DAY.
+      <ul>
+        <li>The borrowed amount must be deposited before 4.00 pm. If not it will attract an interest rate of 25% each day plus the total sum.</li>
+        <li>All amounts that belong to Credolin Enterprise Ltd must be deposited to our account 5040224805(Imarisha account Keringet/Kericho or Family Bank Account 083000019596).</li>
+        <li>Paying in slip to be handed to our secretary in our office.</li>
+      </ul>
+      </b></p>
     </fieldset>
+  </div>
+  <div style="page-break-before: always;">
+    <p><b>THIS IS FOR OFFICIAL USE ONLY<br>SUPERVISOR COMMITTEE ONLY</b></p>
+    <p>On behalf of Credolink Enterprise Ltd, we hereby affirm that the borrower has shown to us the assets and also provided title documents and we have physical inspected the assets listed above and ascertained their approximate value and marketablility and that they belong to the borrwer and that the spouse/guardian has given consent to this loan.</p>
+    <p>We have also in our possession of the documents which we will return to the borrower after the loan is cleared.</p>
+    Signed by:-<br><br><span style="padding-right: 33px;">1<sup>st</sup> Director...................</span><span style="padding-right: 33px;">2<sup>nd</sup> Director...................</span><span>3<sup>rd</sup> Director...................<span>
+    <p>
+      <span><b>Management committee</b><span>
+      <p>Loan amount '.$tableLoans['loanAmount'].'<br>Duration(months) 1 (one)<br>Interest rate 40%<br>Date of 1<sup>st</sup> borrowing<br>Date of last return ..................................</p>
+      <p><b>DIRECTORS
+        <ol>
+          <li>HENRY NYABIOSI NYABIOSI (TELL: 0729676802) ........................................</li>
+          <li>MACHARIA MATENA (TELL: 0723839792) .................................</li>
+          <li>EVANS NYANETI (TEL: 0728082609) .......................................</li>
+        </ol>
+      </b></p>
+      <p><b>KERINGET OFFICE
+        <ol>DAISY CHELANGAT ID 32078402 (0702686034) ........................</ol>
+        <ol>CHRISTOPHER RONO ID 146333384 (0729365452) ......................</ol>
+      </b></p>
+      <P><b>COMMITTEE MEMBERS
+        <ul>
+          <li>MONICA OMURWA: .........................</li>
+          <li>CHARLES NDEGE: .........................</li>
+          <li>VIRGINIA WAMAITHA: ............................</li>
+          <li>KEN ANDREW ONYANGA: ............................</li>
+        </ul>
+      </b></P>
+    </p>
+    <p><b>Half of the loan form application amount will be deducted from your loan application form if you fill this form without security.</b>
+      <ul>
+        <li>Loan application form is Ksh. 500</li>
+        <li>The amount should be paid before your form is processed.</li>
+      </ul>
+    </p>
+  </div>
+  <div style="page-break-before: always;">
+    <p style="text-align: center;"><b>REPUBLIC OF KENYA<br>IN THE MATTER OF THE OATHS AND STATUTORY DECLARATIONS ACT<br>(CHAPTER 15 LAWS OF KENYA)<br><br><span style="text-decoration: underline;">AFFIDAVIT</span></b></p>
+    <p>I <span style="text-decoration: underline;"><b>'.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).'</b><b></span> of National Identification Number <b>'.$tableBorrower['idNo'].'</b>, Tel: <b>'.$tableBorrower['phoneNo'].'</b> in the republic of Kenya and make oath and state as follows:-</p>
+    <ol>
+      <li>Credolink Enterprise Ltd has agreed to lend money in accordance with the team of the loan agreement, assets, schedule and group guarantee all signed by me. I undertake to repay the entire amount of money plus all applicable fees, services charges, penalties and cost of recovery.</li>
+      <li>In event of default of loan, I surrender security assets for sale by the way of private sale or public auction as listed in the asset schedul duly signed by me.</li>
+      <li>I admint that, if I miss any payment due under this loan agreement the management committee of Credolink Enterprise Ltd or its agents may without further notice to me, immediately enter upon the land or promise where my assets are located and take  possession and sell security assets by private sale or public auction.</li>
+      <li>I have authorized, consented that incase of motor vehicle or motor cycle the management committee is at liberty to have the motor vehicle or motor cycle impounded at the police station awaiting further advice or court order to have the asset sold or as per the loan agreement herein signed.</li>
+      <li>The company is at liberty to sue me through their advocates to recover any loss or outstanding amount owed by me.</li>
+      <li>I have consented to the auction stated in paragraph four(4) and five(5) of the affidavit.</li>
+      <li>My spouse/guardian has consented to the actions stated in paragraph four(4) and five(5) of this affidavit.</li>
+      <li>That whatever is deponed herein above is true to the best of our knowledge, information and belief.</li>
+    </ol>
+    <p><b>SWORN BY THE SAID<br><span style=""><b>'.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).'</b><b><br><br></span> THIS ............................. DAY OF ........................<br><br><span style="padding-right: 35%;">BEFORE ME</span><span>DEPONENTS ........................</span></b></p>
+    <p><b>COMMISSIONER FOR OATHS</b></p>
+    <p><span style="text-decoration: underline;"><b>DRAWN BY</b></span><br><br>T.O NYANGAU KEMUNTO & CO. ADVOCATE<br>COFFEE PLAZE 7<sup>th</sup> FLOOR ROOM 4<br>P.O BOX 13153-001000<br>NAIROBI<br>TELL: 0722900019</p>
   </div>
 ';
 
