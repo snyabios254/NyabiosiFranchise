@@ -13,7 +13,7 @@ if (mysqli_query($conn, $tableGuarantorInfo)) {
 
   $numRowsErr = '';
 
-  if ($numRows == 0 && !empty($_POST['gr2FirstName']) && !empty($_POST['gr2SecName']) && !empty($_POST['gr2ThirdName']) && !empty($_POST['gr2IdNo']) && !empty($_POST['gr2PhoneNo'])) {
+  if ($numRows == 0 && mb_strlen($gr2PhoneNo) == 8 && !empty($_POST['gr2FirstName']) && mb_strlen($gr2IdNo) == 8 && !empty($_POST['gr2SecName']) && !empty($_POST['gr2ThirdName']) && !empty($_POST['gr2IdNo']) && !empty($_POST['gr2PhoneNo'])) {
       if (mysqli_query($conn, "INSERT INTO guarantorInfo (formNo, firstName, secName, thirdName, idNo, phoneNo) VALUES ('$formNo', '$gr2FirstName', '$gr2SecName', '$gr2ThirdName', '$gr2IdNo', '$gr2PhoneNo');")) {
         echo 'gr2 entered';
       }  else {
@@ -26,13 +26,13 @@ if (mysqli_query($conn, $tableGuarantorInfo)) {
     ";
   }
 
-  if (!empty($_POST['grFirstName']) && !empty($_POST['grSecName']) && !empty($_POST['grThirdName']) && !empty($_POST['grIdNo']) && !empty($_POST['grPhoneNo'])) {
+  if (!empty($_POST['grFirstName']) && mb_strlen($grPhoneNo) == 8 && mb_strlen($grIdNo) == 8 && !empty($_POST['grSecName']) && !empty($_POST['grThirdName']) && !empty($_POST['grIdNo']) && !empty($_POST['grPhoneNo'])) {
     if (mysqli_query($conn, $grSql)) {
       echo 'navigating to security and loan page';
       $_SESSION['formNo'] = $formNo;
       if (isset($_SESSION['formNo'])) {
         header("location: ../security/security.php");
-      }  
+      }
     }
   } else {echo 'there some errors on guarantor one';}
 } else {echo 'problem here'.mysqli_error($conn);}

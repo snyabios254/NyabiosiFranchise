@@ -1,6 +1,6 @@
 <?php
 $spFirstName = $spSecName = $spThirdName = $spIdNo = $spPhoneNo = '';
-$spFirstNameErr = $spSecNameErr = $spThirdNameErr = $spIdNoErr = $spPhoneNoErr = '';
+$spFirstNameErr = $spSecNameErr = $spThirdNameErr = $spIdNoErr = $spPhoneNoErr = $grIdNoErr2 = $gr2IdNoErr2 = $grPhoneNoErr2 = $gr2PhoneNoErr2 = '';
 
 $grFirstName = $grSecName = $grThirdName = $grIdNo = $grPhoneNo = $gr2FirstName = $gr2SecName = $gr2ThirdName = $gr2IdNo = $gr2PhoneNo = '';
 $grFirstNameErr = $grSecNameErr = $grThirdNameErr = $grIdNoErr = $grPhoneNoErr = $gr2FirstNameErr = $gr2SecNameErr = $gr2ThirdNameErr = $gr2IdNoErr = $gr2PhoneNoErr = '';
@@ -38,6 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['spIdNo'])) {
     $spIdNo = mysqli_real_escape_string($conn, $_POST['spIdNo']);
+    if (mb_strlen($spIdNo) != 8) {
+      $spIdNoErr2 .= '
+      <div class="alert alert-danger">Invalid ID number entered.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $spIdNoErr .= '
     <div class="alert alert-danger">Spouse ID number is required.
@@ -48,6 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['spPhoneNo'])) {
     $spPhoneNo = mysqli_real_escape_string($conn, $_POST['spPhoneNo']);
+    if (mb_strlen($spIdNo) != 8) {
+      $spPhoneNoErr2 .= '
+      <div class="alert alert-danger">Invalid phone number entered.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $spPhoneNoErr .= '
     <div class="alert alert-danger">Spouse phone number is required.
@@ -55,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
     ';
   }
+
   ###################################
 
   if (!empty($_POST['grFirstName'])) {
@@ -89,6 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['grIdNo'])) {
     $grIdNo = mysqli_real_escape_string($conn, $_POST['grIdNo']);
+    if (mb_strlen($grIdNo) != 8) {
+      $grIdNoErr2 .= '
+      <div class="alert alert-danger">Invalid ID number.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden=true>&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $grIdNoErr .= '
     <div class="alert alert-danger">Guarantor ID number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -98,6 +119,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['grPhoneNo'])) {
     $grPhoneNo = mysqli_real_escape_string($conn, $_POST['grPhoneNo']);
+    if (mb_strlen($grPhoneNo) != 8) {
+      $grPhoneNoErr2 .=  '
+      <div class="alert alert-danger">Invalid phone number.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden=true>&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $grPhoneNoErr .= '
     <div class="alert alert-danger">Guarantor phone number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
@@ -137,6 +164,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['gr2IdNo'])) {
     $gr2IdNo = mysqli_real_escape_string($conn, $_POST['gr2IdNo']);
+    if (mb_strlen($gr2IdNo) != 8) {
+      $gr2IdNoErr2 .= '
+      <div class="alert alert-danger">Invalid ID number.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden=true>&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $gr2IdNoErr .= '
     <div class="alert alert-danger">Guarantor two ID number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
@@ -146,6 +179,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
   if (!empty($_POST['gr2PhoneNo'])) {
     $gr2PhoneNo = mysqli_real_escape_string($conn, $_POST['gr2PhoneNo']);
+    if (mb_strlen($gr2PhoneNo) != 8) {
+      $gr2PhoneNoErr2 .=  '
+      <div class="alert alert-danger">Invalid phone number.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden=true>&times;</span></button>
+      </div>
+      ';
+    }
   } else {
     $gr2PhoneNoErr .= '
     <div class="alert alert-danger">Guarantor two phone number is required.    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>

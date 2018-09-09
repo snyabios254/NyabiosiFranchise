@@ -17,11 +17,11 @@
 <div class="form-row">
   <div class="form-group col-lg">
     <label for="grIdNo">ID number:</label>
-    <input type="text" name="grIdNo" id="grIdNo" class="form-control" value="<?php echo $grIdNo;?>"><br><?php echo $grIdNoErr;?>
+    <input type="number" name="grIdNo" id="grIdNo" class="form-control" value="<?php echo $grIdNo;?>"><br><?php echo $grIdNoErr.$grIdNoErr2;?>
   </div>
   <div class="form-group col-lg">
     <label for="grPhoneNo">Phone number:</label>
-    <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="text" name="grPhoneNo" id="grPhoneNo" class="form-control" value="<?php echo $grPhoneNo;?>"><br><?php echo $grPhoneNoErr;?></div>
+    <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="varchar" name="grPhoneNo" id="grPhoneNo" class="form-control" value="<?php echo $grPhoneNo;?>"></div><?php echo $grPhoneNoErr.$grPhoneNoErr2;?>
   </div>
 </div>
 <p>Click <a href="#gr2Collapse" data-toggle="collapse">here</a> to enter guarantor two information(optional).</p>
@@ -44,11 +44,11 @@
   <div class="form-row">
     <div class="form-group col-lg">
       <label for="gr2IdNo">ID number:</label>
-      <input type="text" name="gr2IdNo" id="gr2IdNo" class="form-control" value="<?php echo $gr2IdNo;?>"><br><?php echo $gr2IdNoErr;?>
+      <input type="number" name="gr2IdNo" id="gr2IdNo" class="form-control" value="<?php echo $gr2IdNo;?>"><br><?php echo $gr2IdNoErr.$gr2IdNoErr2;?>
     </div>
     <div class="form-group col-lg">
       <label for="gr2PhoneNo">Phone number:</label>
-      <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="text" name="gr2PhoneNo" id="gr2PhoneNo" class="form-control" value="<?php echo $gr2PhoneNo;?>"></div><?php echo $gr2PhoneNoErr;?>
+      <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="varchar" name="gr2PhoneNo" id="gr2PhoneNo" class="form-control" value="<?php echo $gr2PhoneNo;?>"></div><?php echo $gr2PhoneNoErr.$gr2PhoneNoErr2;?>
     </div>
   </div>
 </div>
