@@ -16,10 +16,11 @@ $asset4Errors = !empty($_POST['assets4']) && !empty($_POST['year4']) && !empty($
 $asset5Errors = !empty($_POST['assets5']) && !empty($_POST['year5']) && !empty($_POST['serialNo5']) && !empty($_POST['buyPrice5']) && !empty($_POST['sellPrice5']);
 $loanInsert = '';
 $numRowsLoan = '';
-$numRowsLoan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM loanAmount WHERE formNo = '$formNo'"));
-if (mysqli_query($conn, $loanTable) && $numRowsLoan == 0 && !empty($_POST['loanAmount'])) {
+$numRowsLoan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM loans WHERE formNo = '$formNo'"));
+if (mysqli_query($conn, $loanTable) && !empty($_POST['loanAmount'])) {
   $loanInsert = "INSERT INTO loans (formNo, loanAmount) VALUES ('$formNo', '$loanAmount')";
-  if (mysqli_query($conn, $loanInsert)) {
+  if ($numRowsLoan == 0) {
+    mysqli_query($conn, $loanInsert);
     if (isset($_POST['rateCheck'])) {
       if (isset($_POST['finish'])) {
         include("insertStatements.php");
@@ -87,8 +88,10 @@ if (mysqli_query($conn, $loanTable) && $numRowsLoan == 0 && !empty($_POST['loanA
             }
           } else {echo 'not entered one';}
         }
+        header("location: ../home/home.php");
       }
     } else {
+      echo 'not entere here';
       $rateCheckErr2 = $rateCheckErr = '';
       $rateCheckErr = 'alert alert-danger';
       $rateCheckErr2 .= '
@@ -100,5 +103,5 @@ if (mysqli_query($conn, $loanTable) && $numRowsLoan == 0 && !empty($_POST['loanA
       </div>
       ';
     }
-  }
-}
+  } else {echo 'nop nop';}
+} else {echo 'in the beginning there was a problem';}
