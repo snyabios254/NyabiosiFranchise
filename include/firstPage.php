@@ -1,83 +1,66 @@
 <?php
-$firstName = $secName = $thirdName = $subCounty = $division = $estate = $idNo = $email = $phoneNo = $maritalStatus = "";
-$firstNameErr = $secNameErr = $estateErr = $thirdNameErr = $subCountyErr = $divisionErr = $idNoErr = $emailError = $phoneNoErr = $maritalStatusErr = "";
+$firstName = $secName = $thirdName = $subCounty = $division = $estate = $idNo = $email = $phoneNo = $maritalStatus = $employer = $occupation = "";
+$firstNameErr = $secNameErr = $estateErr = $thirdNameErr = $subCountyErr = $divisionErr = $idNoErr = $emailError = $phoneNoErr = $maritalStatusErr = $employerErr = $occupationErr = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (!empty($_POST['firstName'])) {
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
   } else {
-    function firstName($firstNameErr) {
-      $firstNameErr .= '
-        <div class="alert alert-danger">Your first name is required.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
-        </div>
-      ';
-      return $firstNameErr;
-    }
+    $firstNameErr .= '
+    <div class="alert alert-danger">Your first name is required.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
+    </div>
+    ';
   }
 
   if (!empty($_POST['secName'])) {
     $secName = mysqli_real_escape_string($conn, $_POST['secName']);
   } else {
-    function secName($secNameErr) {
       $secNameErr .= '
       <div class="alert alert-danger">Your second name is required.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $secNameErr;
-    }
   }
 
   if (!empty($_POST['thirdName'])) {
     $thirdName = mysqli_real_escape_string($conn, $_POST['thirdName']);
   } else {
-    function thirdName($thirdNameErr) {
       $thirdNameErr = '
       <div class="alert alert-danger">Your third name is required.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $thirdNameErr;
-    }
   }
 
   if (!empty($_POST['subCounty'])) {
     $subCounty = mysqli_real_escape_string($conn, $_POST['subCounty']);
   } else {
-    function subCounty($subCountyErr) {
       $subCountyErr .= '
       <div class="alert alert-danger">Enter name of Sub-County
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $subCountyErr;
-    }
   }
 
   if (!empty($_POST['division'])) {
     $division = mysqli_real_escape_string($conn, $_POST['division']);
   } else {
-    function division($divisionErr) {
       $divisionErr .= '
       <div class="alert alert-danger">Enter name of the division
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $divisionErr;
-    }
   }
 
   if (!empty($_POST['estate'])) {
     $estate = mysqli_real_escape_string($conn, $_POST['estate']);
   } else {
-    function estate($estateErr) {
       $estateErr .= '
       <div class="alert alert-danger">Enter name of your estate
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $estateErr;
-    }
   }
 
   if (!empty($_POST['idNo'])) {
@@ -93,46 +76,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       #echo "problem id".mysqli_error($conn);
     }
   } else {
-    function idNo($idNoErr) {
       $idNoErr .= '
       <div class="alert alert-danger">Please enter your ID number.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $idNoErr;
-    }
   }
 
   if (!empty($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
   } else {
-    function emailError($emailError) {
       $emailError .= '
       <div class="alert alert-danger">Please enter your ID number.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $emailError;
-    }
   }
 
   if (!empty($_POST['phoneNo'])) {
     $phoneNo = mysqli_real_escape_string($conn, $_POST['phoneNo']);
-    if (mb_strlen($phoneNo) != 9) {
+    if (mb_strlen($phoneNo) != 8) {
       $phoneNoErr .= '
       <div class="alert alert-danger">Invalid phone number.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
     }
   } else {
-    function phoneNo($phoneNoErr) {
       $phoneNoErr .= '
       <div class="alert alert-danger">Please enter your phone number.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>  </button>
       </div>
       ';
-      return $phoneNoErr;
-    }
+  }
+
+  if (!empty($_POST['employer'])) {
+    $employer = mysqli_real_escape_string($conn, $_POST['employer']);
+  } else {
+    $employerErr .= '
+    <div class="alert alert-danger">Please enter your current employer.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
+  }
+
+  if (!empty($_POST['occupation'])) {
+    $occupation = mysqli_real_escape_string($conn, $_POST['occupation']);
+  } else {
+    $occupationErr .= '
+    <div class="alert alert-danger">Please enter your current occupation.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    ';
   }
 
   if (!empty($_POST['maritalStatus'])) {
@@ -141,7 +135,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
   } else {
-    function maritalStatus($maritalStatusErr) {
       $maritalStatusErr .= '
       <div class="col-lg">
       <div class="alert alert-danger">Marital status is required.
@@ -149,8 +142,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       </div><div class="col-lg"></div><div class="col-lg"></div>
       ';
-      return $maritalStatusErr;
-    }
   }
 
   $emailSql = mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE email = '$email'");
