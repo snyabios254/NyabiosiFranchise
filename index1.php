@@ -27,25 +27,25 @@
       </div>
       <div class="form-group col-lg-4">
         <label for="secName">Second Name:</label>
-        <input type="text" name="secName" value="<?php echo $secName;?>" id="secName" class="form-control"><br><?php echo $secName;?>
+        <input type="text" name="secName" value="<?php echo $secName;?>" id="secName" class="form-control"><br><?php echo $secNameErr;?>
       </div>
       <div class="form-group col-lg-4">
         <label for="thirdName">Third Name:</label>
-        <input type="text" value="<?php echo $thirdName;?>" name="thirdName" id="thirdName" class="form-control"><?php echo $thirdNameErr;?>
+        <input type="text" value="<?php echo $thirdName;?>" name="thirdName" id="thirdName" class="form-control"><br><?php echo $thirdNameErr;?>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-lg">
         <label for="subCounty">Residence Sub-County:</label>
-        <input type="text" name="subCounty" value="<?php echo $subCounty;?>" id="subCounty" class="form-control"><?php echo $subCountyErr;?>
+        <input type="text" name="subCounty" value="<?php echo $subCounty;?>" id="subCounty" class="form-control"><br><?php echo $subCountyErr;?>
       </div>
       <div class="form-group col-lg">
         <label for="division">Residence Division:</label>
-        <input type="text" value="<?php echo $division;?>" name="division" id="division" class="form-control"><?php echo $divisionErr;?>
+        <input type="text" value="<?php echo $division;?>" name="division" id="division" class="form-control"><br><?php echo $divisionErr;?>
       </div>
       <div class="form-group col-lg">
         <label for="estate">Residence Estate:</label>
-        <input type="text" name="estate" value="<?php echo $estate;?>" id="estate" class="form-control"><?php echo $estateErr;?>
+        <input type="text" name="estate" value="<?php echo $estate;?>" id="estate" class="form-control"><br><?php echo $estateErr;?>
       </div>
     </div>
     <div class="form-row">
@@ -59,7 +59,21 @@
       </div>
       <div class="form-group col-lg">
         <label for="phoneNo">Phone Number: </label>
-        <input type="number" value="<?php echo $phoneNo;?>" class="form-control" name="phoneNo" id="phoneNo" placeholder="Format is 2547********"><br><?php echo $phoneNoErr;?>
+
+        <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="varchar" value="<?php echo $phoneNo;?>" class="form-control" name="phoneNo" id="phoneNo"></div><?php echo $phoneNoErr;?></div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-lg-4">
+        <label for="employer">Employer: </label>
+        <input name="employer" type="text" id="employer" value="<?php echo $employer;?>" class="form-control"><br><?php echo $employerErr;?>
+      </div>
+      <div class="col-lg-4">
+        <label for="occupation">Occupation: </label>
+        <input type="text" name="occupation" id="occupation" value="<?echo $occupation;?>" class="form-control"><br><?php echo $occupationErr;?>
+      </div>
+      <div class="col-lg-4">
+
       </div>
     </div><hr>
     <div class="form-row">
