@@ -1,13 +1,29 @@
 <?php
-session_start();
-$formNo = 893144;
+if (isset($_GET['formNo'])) {
+  $formNo = $_GET['formNo'];
+} else {
+  header("location: ../home/home.php");
+}
+
 require_once("../dompdf/autoload.inc.php");
-include("../include/conn.php");
+include("../include/conn.php");$checkMaritalSErr = $tableSpouse =$tableSpouse = $tableSpouseId =$spouseFirstName = $spouseSecName =$spouseThirdName = $spousePhoneNo ='';
 #include("../include/bootstrapLinks.html");
+$checkMaritalS = mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE formNo = '$formNo' AND maritalStatus = 'single'");
 
 $tableBorrower = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE formNo = '$formNo'"));
 $tableAssets = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM assets WHERE formNo = '$formNo'"));
-$tableSpouse = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM spouseInfo WHERE formNo = '$formNo'"));
+
+if (mysqli_num_rows($checkMaritalS) == 0) {
+  $tableSpouse = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM spouseInfo WHERE formNo = '$formNo'"));
+  $spouseFirstName = strtoupper($tableSpouse['firstName']);
+  $spouseSecName = strtoupper($tableSpouse['secName']);
+  $spouseThirdName = strtoupper($tableSpouse['thirdName']);
+  $spousePhoneNo = $tableSpouse['phoneNo'];
+  $tableSpouseId = $tableSpouse['idNo'];
+} else {
+  $checkMaritalSErr = "N/A";
+}
+
 $tableLoans = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM loans WHERE formNo = '$formNo'"));
 $tableGuarantors = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM guarantorInfo WHERE formNo = '$formNo'"));
 $tableEmployer = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM  employer WHERE formNo = '$formNo'"));
@@ -88,8 +104,8 @@ $html = '
       <p><b>Loan amount: </b>'.$tableLoans['loanAmount'].' <span style="font-style: italic;">with 40% interest rate</span></p>
       <p><b>Sub-County: </b>'.strtoupper($tableBorrower['subCounty']).'</p>
       <p><b>Division: </b>'.strtoupper($tableBorrower['division']).'</p>
-      <p><b>Spouse name:</b> '.strtoupper($tableSpouse['firstName']).' '.strtoupper($tableSpouse['secName']).' '.strtoupper($tableSpouse['thirdName']).'</p>
-      <p><b>Spouse phone number: </b>'.$tableSpouse['phoneNo'].'</p>
+      <p><b>Spouse name:</b> '.$spouseFirstName.$checkMaritalSErr.' '.$spouseSecName.' '.$spouseThirdName.'</p>
+      <p><b>Spouse phone number: </b>'.$spousePhoneNo.$checkMaritalSErr.'</p>
     </div>
     <div style="float: right;">
       <p><b>Date and time:</b> '.$tableAssets['date'].'</p>
@@ -98,14 +114,14 @@ $html = '
       <p><b>Sign:</b> .........................................................</p>
       <p><b>Estate: </b>'.strtoupper($tableBorrower['estate']).'</p>
       <p><b>Marital status: </b>'.strtoupper($tableBorrower['maritalStatus']).'</p>
-      <p><b>Spouse ID number: </b>'.$tableSpouse['idNo'].'</p>
-      <p><b>Spouse sign:</b> .........................................................</p>
+      <p><b>Spouse ID number: </b>'.$tableSpouseId.$checkMaritalSErr.'</p>
+      <p><b>Spouse sign:</b> ..........................'.$checkMaritalSErr.'...............................</p>
     </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <p style="line-height: 25px;">Storage fee of security item(s) is Ksh. 500/= per day.<br>Failure to pay the amount loaned plus interest within 30 days and 5 days grace period after and Credolink Frachise comes after you, you risk a Ksh. 5000/= fine.<br>
     I <span style="text-decoration: underline;"><b>'.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).'</b></span> ID number <span style="text-decoration: underline;"><b>'.$tableBorrower['idNo'].'</b></span> irrevocably assigns all rights to title and interest in the assets listed below to Credolink Frachise. Credolink Franchise put into consideration to retain the security enlisted to the advocates of Credolink Frachise for security purpose which may include Log books, title deeds etc. Other requirements to acquire a loan also include: ID, passport, KRA pin. The loan will be paid through the bank account of Credolink Frachise. Failure to pay loan given will attract interest of upto 25% within the first day of default. Below is the security to the loan:-</p>
     <ol style="line-height: 25px;">'.$dataAssets.'</ol>
-    <p style="line-height: 25px;"><span style="text-decoration: underline;"><b>Spouse/Guardian consent</b></span><br>
-    I '.strtoupper($tableSpouse['firstName']).' '.strtoupper($tableSpouse['secName']).' '.strtoupper($tableSpouse['thirdName']).' spouse to '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' certify that I have given consent to the borrower to offer the above assets as security for the loan whose conditions have been fully explained to me and I have no objection for tha same to be sold to satify the loan incase the borrower defaults.<br><b>Spouse/Guardian</b><br/><span style="padding-right: 3rem;">ID number: '.$tableSpouse['idNo'].'</span> <span><b>Sign:</b>........................................</span>
+    <p style="line-height: 25px;"><span style="text-decoration: underline;"><b>Spouse/Guardian consent ('.$checkMaritalSErr.')</b></span><br>
+    I '.$spouseFirstName.' '.$spouseSecName.' '.$spouseThirdName.' spouse to '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' certify that I have given consent to the borrower to offer the above assets as security for the loan whose conditions have been fully explained to me and I have no objection for tha same to be sold to satify the loan incase the borrower defaults.<br><b>Spouse/Guardian</b><br/><span style="padding-right: 3rem;">ID number: '.$tableSpouseId.$checkMaritalSErr.'</span> <span><b>Sign:</b>....................'.$checkMaritalSErr.'....................</span>
     </p>
   </fieldset>
   <div style="page-break-before: always;">

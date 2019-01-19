@@ -1,5 +1,7 @@
 <?php
-$img = $_POST['hiddenImage'];
+if (isset($_POST['hiddenImage'])) {
+  $img = $_POST['hiddenImage'];
+} else {echo 'not set';}
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);

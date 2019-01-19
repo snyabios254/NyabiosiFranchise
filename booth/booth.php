@@ -5,6 +5,7 @@
   <?php
   include("../include/bootstrapLinks.html");
   include("../include/conn.php");
+  require("boothDB.php");
   ?>
   <style></style>
 </head>
@@ -16,14 +17,14 @@
       <a href="#" id="capture" class="btn btn-info btn-block">Take photo</a>
     </div>
     <form method="POST" id="formId">
-    <div class="form-group col-lg border border-info rounded">
-      <canvas id="canvas" width="500" height="300">
-      <img scr="#" class="figure-img img-fluid rounded" id="photo"></canvas>
-      <input type="hidden" name="hiddenImage" id="hiddenImage">
-      <button class="btn btn-info btn-block" type="submit" name="submit" href="#">Next >></button>
-    </div>
+      <div class="form-group col-lg border border-info rounded">
+        <canvas id="canvas" width="500" height="300">
+        <img scr="#" class="figure-img img-fluid rounded" id="photo"></canvas>
+        <input type="hidden" name="hiddenImage" id="hiddenImage">
+        <button class="btn btn-info btn-block" type="submit" name="submit" href="#">Next >></button>
+      </div>
     <form>
   </div>
-  <script src="photo.js"></script><?php include("boothDB.php");?>
+  <script src="photo.js"></script>
 </body>
 </html>

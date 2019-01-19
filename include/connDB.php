@@ -1,5 +1,5 @@
 <?php
-$sqlBorrower = "CREATE TABLE IF NOT EXISTS `credoLink`.`borrowerInfo` ( `formNo` INT(6) NOT NULL ,  `firstName` TEXT NOT NULL ,  `secName` TEXT NOT NULL ,  `thirdName` TEXT NOT NULL ,  `subCounty` TEXT NOT NULL ,  `division` TEXT NOT NULL ,  `estate` TEXT NOT NULL ,  `idNo` INT(8) NOT NULL ,  `email` VARCHAR(20) NOT NULL ,  `phoneNo` VARCHAR(9) NOT NULL , `maritalStatus` TEXT NOT NULL ) ENGINE = InnoDB;";
+$sqlBorrower = "CREATE TABLE IF NOT EXISTS `credoLink`.`borrowerInfo` ( `formNo` INT(6) NOT NULL ,  `firstName` TEXT NOT NULL ,  `secName` TEXT NOT NULL ,  `thirdName` TEXT NOT NULL ,  `subCounty` TEXT NOT NULL ,  `division` TEXT NOT NULL ,  `estate` TEXT NOT NULL ,  `idNo` INT(8) NOT NULL ,  `email` VARCHAR(20) NOT NULL ,  `phoneNo` VARCHAR(9) NOT NULL , `maritalStatus` TEXT NOT NULL, `date` TIMESTAMP NOT NULL ) ENGINE = InnoDB;";
 
 $sqlEmployer = "CREATE TABLE IF NOT EXISTS `credoLink`.`employer` (`formNo` INT(6) NOT NULL, `employer` TEXT NOT NULL, `occupation` TEXT NOT NULL) ENGINE = InnoDB;";
 
@@ -16,7 +16,7 @@ if (mysqli_query($conn, $sqlBorrower) && mysqli_query($conn, $sqlEmployer)) {
       $unique = false;
       while (!$unique) {
         if ($count > $numRows+5) {
-          echo "<div class='alert alert-danger'>There are no more uniquer numbers in the given range.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden=true>&times;</span></button>
+          echo "<div class='alert alert-danger'>There are no more unique numbers in the given range.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden=true>&times;</span></button>
           </div>";
           die();
         }

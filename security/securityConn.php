@@ -19,8 +19,9 @@ $numRowsLoan = '';
 $numRowsLoan = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM loans WHERE formNo = '$formNo'"));
 if (mysqli_query($conn, $loanTable) && !empty($_POST['loanAmount'])) {
   $loanInsert = "INSERT INTO loans (formNo, loanAmount) VALUES ('$formNo', '$loanAmount')";
-  if ($numRowsLoan == 0) {
+   if ($numRowsLoan == 0) {
     mysqli_query($conn, $loanInsert);
+  }
     if (isset($_POST['rateCheck'])) {
       if (isset($_POST['finish'])) {
         include("insertStatements.php");
@@ -103,5 +104,5 @@ if (mysqli_query($conn, $loanTable) && !empty($_POST['loanAmount'])) {
       </div>
       ';
     }
-  } else {echo 'nop nop';}
+  // } else {echo 'nop nop';}
 } else {echo 'in the beginning there was a problem';}
