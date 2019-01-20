@@ -12,6 +12,9 @@ $checkMaritalS = mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE formNo = 
 
 $tableBorrower = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM borrowerInfo WHERE formNo = '$formNo'"));
 $tableAssets = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM assets WHERE formNo = '$formNo'"));
+$firstNamePdf = strtoupper($tableBorrower['firstName']);
+$secNamePdf = strtoupper($tableBorrower['secName']);
+$thirdNamePdf = strtoupper($tableBorrower['thirdName']);
 
 if (mysqli_num_rows($checkMaritalS) == 0) {
   $tableSpouse = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM spouseInfo WHERE formNo = '$formNo'"));
@@ -133,7 +136,7 @@ $html = '
       </ol>
       <p>'.$data.'</p>
       <p><span style="text-decoration: underline;"><b>BORROWER DECLARATION</b><span></p>
-      <p style="line-height: 25px;">I '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' the borrower in event of default agree to immediately pay all  costs by Credolink Enterprice Ltd in enforcing this agreement. I agree to abide to all the rules, policies and regulations of Credolink Enterprice Ltd. I agree to pay my total loan of <b>Ksh. '.loanReturn($tableLoans).' </b>in words <b>'.convert_number_to_words(loanReturn($tableLoans)).' only</b>.</p>
+      <p style="line-height: 25px;">I '.strtoupper($tableBorrower['firstName']).' '.strtoupper($tableBorrower['secName']).' '.strtoupper($tableBorrower['thirdName']).' the borrower in event of default agree to immediately pay all  costs by Credolink Enterprice Ltd in enforcing this agreement. I agree to abide to all the rules, policies and regulations of Credolink Enterprice Ltd. I agree to pay my total loan of <b>Ksh. '.loanReturn($tableLoans).' </b>in words <b>SHILLINGS '.strtoupper(convert_number_to_words(loanReturn($tableLoans))).' </b> only.</p>
       <p style="line-height: 25px;">Further I the borrower and my spouse where applicable have have hereby agreed and authorized Credolink Enterprise Ltd to sell the goods or property given as security by public auction through auctioneers who shall recover their costs and pay the outstanding amount and interest to the company.</p>
       <p>Date given to the borrower <b>'.timeForm($tableAssets).'</b><p>
       <p>The last date of return with 40% interest <b>'.dataAdd($tableAssets).'</b><p>
@@ -221,4 +224,4 @@ $html = '
 $document->loadHtml($html);
 $document->setPaper('A4', 'potrait');
 $document->render();
-$document->stream("'.$formNo.'", array("Attachment"=>0));
+$document->stream("'$firstNamePdf' '$secNamePdf' '$thirdNamePdf' '$formNo'", array("Attachment"=>0));

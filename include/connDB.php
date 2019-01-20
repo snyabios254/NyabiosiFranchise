@@ -1,5 +1,5 @@
 <?php
-$sqlBorrower = "CREATE TABLE IF NOT EXISTS `credoLink`.`borrowerInfo` ( `formNo` INT(6) NOT NULL ,  `firstName` TEXT NOT NULL ,  `secName` TEXT NOT NULL ,  `thirdName` TEXT NOT NULL ,  `subCounty` TEXT NOT NULL ,  `division` TEXT NOT NULL ,  `estate` TEXT NOT NULL ,  `idNo` INT(8) NOT NULL ,  `email` VARCHAR(20) NOT NULL ,  `phoneNo` VARCHAR(9) NOT NULL , `maritalStatus` TEXT NOT NULL, `date` TIMESTAMP NOT NULL ) ENGINE = InnoDB;";
+$sqlBorrower = "CREATE TABLE IF NOT EXISTS `credoLink`.`borrowerInfo` ( `formNo` INT(6) NOT NULL ,  `firstName` TEXT NOT NULL ,  `secName` TEXT NOT NULL ,  `thirdName` TEXT NOT NULL ,  `subCounty` TEXT NOT NULL ,  `division` TEXT NOT NULL ,  `estate` TEXT NOT NULL ,  `idNo` INT(8) NOT NULL ,  `email` VARCHAR(20) NOT NULL ,  `phoneNo` VARCHAR(9) NOT NULL , `maritalStatus` TEXT NOT NULL, `date` TIMESTAMP NOT NULL, `returnDate` DATETIME NOT NULL, `defaultDate` DATETIME NOT NULL) ENGINE = InnoDB;";
 
 $sqlEmployer = "CREATE TABLE IF NOT EXISTS `credoLink`.`employer` (`formNo` INT(6) NOT NULL, `employer` TEXT NOT NULL, `occupation` TEXT NOT NULL) ENGINE = InnoDB;";
 
