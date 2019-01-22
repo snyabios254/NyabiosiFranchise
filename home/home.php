@@ -8,17 +8,19 @@
   ?>
 </head>
 <body class="bg-secondary container bg-color-white">
-  <?php include("borrower.php");?>
+  <?php
+  include("../loanForms/currentLoansSql.php");
+  include("borrower.php");?>
   <div class="bg-light rounded border border-info">
     <?php include("homeHeader.html");?><br>
     <div class="container">
     <div class="row">
       <div class="col-lg-2">
         <div class="btn-group-vertical" role="group" aria-label="...">
-          <button type="button" class="btn btn-outline-dark">Current loans</button>
-          <button type="button" class="btn btn-outline-dark">Cleared loans</button>
-          <button type="button" class="btn btn-outline-dark">Overdue loans</button>
-          <button type="button" class="btn btn-outline-dark">Defaulted loans</button>
+          <a href="../loanForms/currentLoans.php" type="button" class="btn btn-block btn-outline-dark">Current loans</a>
+          <a href="../loanForms/clearedLoans.php" type="button" class="btn btn-block btn-outline-dark">Cleared loans</a>
+          <a href="../loanForms/overdueLoans.php" type="button" class="btn btn-block btn-outline-dark">Overdue loans</a>
+          <a href="../loanForms/defaultedLoans.php" type="button" class="btn btn-block btn-outline-dark">Defaulted loans</a>
         </div>
       </div>
       <div class="col-lg-10 row">

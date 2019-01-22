@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Current loans</title>
+  <title>Overdue loans</title>
   <?php
   include("../include/conn.php");
   include("../include/bootstrapLinks.html");
@@ -11,8 +11,7 @@
   <div class="bg-light rounded border border-info">
     <?php
     include("../home/homeHeader.html");
-    include("currentLoansSql.php");
-    echo $currentLoans;
+    include("../home/editSql.php");
     ?>
   </div>
 </body>

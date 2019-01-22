@@ -1,31 +1,108 @@
 <?php
-$formNo = '';
+$formNo = $currentLoans = $overdueLoans = $defaultedLoans = $clearedLoans = '';
 $tableBorrowerSql = mysqli_query($conn, "SELECT * FROM borrowerInfo");
 $tableAssets = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM assets WHERE formNo = '$formNo'"));
 $tableBorrowerNumRows = mysqli_num_rows($tableBorrowerSql);
 $tableBorrowerData = mysqli_fetch_assoc($tableBorrowerSql);
-$count = 0;
 $allBorrowers = '';
-
-function dataAdd($tableAssets) {
-  $date = $tableAssets['date'];
-  $finalDate = strtotime($date.' +30 days');
-  $final = date("d-m-Y H:i:s", $finalDate);
-  return $final;
-}
-
-$timeLeft = time() - strtotime(dataAdd($tableAssets));
+$currentDate = mysqli_query($conn, "SELECT borrowerInfo.idNo, borrowerInfo.firstName, borrowerInfo.secName, borrowerInfo.email, borrowerInfo.phoneNo, loans.loanAmount, borrowerInfo.estate, tableDates.returnDate, tableDates.defaultDate, tableDates.status FROM borrowerInfo INNER JOIN loans ON borrowerInfo.formNo = loans.formNo INNER JOIN tableDates ON borrowerInfo.formNo = tableDates.formNo ORDER BY borrowerInfo.firstName ASC;");
+$nowDate = date("Y-m-d H:i:s");
 
 if ($tableBorrowerNumRows > 0) {
-  while ($row = mysqli_fetch_assoc($tableBorrowerSql)) {
-    $allBorrowers .= '
-    <div class="card col-lg-3" style="margin: 0rem;">
-      <div class="card-body">
-        <a href="#" style="color: black;"><h5 class="card-title">'.$row['firstName'].' '.$row['secName'].' '.$row['thirdName'].'</h5></a>
-        <p class="card-text"><b>Return date: '.strtotime($row['date']).'</b><br></p>
-        <a href="../pdfDownload/pdfForm.php?formNo='.$row['formNo'].'" target="_blank" class="btn btn-link">PDF</a>
-      </div>
-    </div><br>
-    ';
+  $count = $count2 = $count3 = 1;
+  while ($row = mysqli_fetch_assoc($currentDate)) {
+    if ($nowDate < $row['returnDate'] && $row['status'] == 'negative') {
+      $currentLoans .= '
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">'.$count.'</th>
+            <th scope="col">ID No.</th>
+            <th scope="col">1st Name</th>
+            <th scope="col">2nd Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Loan</th>
+            <th scope="col">Estate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>'.$row['idNo'].'</td>
+            <td>'.$row['firstName'].'</td>
+            <td>'.$row['secName'].'</td>
+            <td>'.$row['email'].'</td>
+            <td>07'.$row['phoneNo'].'</td>
+            <td>Ksh. '.$row['loanAmount'].'</td>
+            <td>'.$row['estate'].'</td>
+          </tr>
+        </tbody>
+      </table>
+      ';
+    }
+    if ($nowDate > $row['returnDate'] && $nowDate < $row['defaultDate'] && $row['status'] == 'negative') {
+      $overdueLoans .= '
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">'.$count2.'</th>
+            <th scope="col">ID No.</th>
+            <th scope="col">1st Name</th>
+            <th scope="col">2nd Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Loan</th>
+            <th scope="col">Estate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>'.$row['idNo'].'</td>
+            <td>'.$row['firstName'].'</td>
+            <td>'.$row['secName'].'</td>
+            <td>'.$row['email'].'</td>
+            <td>07'.$row['phoneNo'].'</td>
+            <td>Ksh. '.$row['loanAmount'].'</td>
+            <td>'.$row['estate'].'</td>
+          </tr>
+        </tbody>
+      </table>
+      ';
+    }
+    if ($nowDate > $row['defaultDate'] && $row['status'] == 'negative') {
+      $defaultedLoans .= '
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">'.$count3.'</th>
+            <th scope="col">ID No.</th>
+            <th scope="col">1st Name</th>
+            <th scope="col">2nd Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Loan</th>
+            <th scope="col">Estate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>'.$row['idNo'].'</td>
+            <td>'.$row['firstName'].'</td>
+            <td>'.$row['secName'].'</td>
+            <td>'.$row['email'].'</td>
+            <td>07'.$row['phoneNo'].'</td>
+            <td>Ksh. '.$row['loanAmount'].'</td>
+            <td>'.$row['estate'].'</td>
+          </tr>
+        </tbody>
+      </table>
+      ';
+    }
+    $count++;
+    $count2++;
+    $count3++;
   }
 }

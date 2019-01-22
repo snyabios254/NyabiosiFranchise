@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Current loans</title>
+  <title>Cleared loans</title>
   <?php
   include("../include/conn.php");
   include("../include/bootstrapLinks.html");
@@ -12,7 +12,7 @@
     <?php
     include("../home/homeHeader.html");
     include("currentLoansSql.php");
-    echo $currentLoans;
+    echo $clearedLoans;
     ?>
   </div>
 </body>
