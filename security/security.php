@@ -17,9 +17,9 @@ if (isset($_SESSION['formNo'])) {
   include("securityConn.php");
 ?>
 </head>
-<body class="jumbotron container-fluid">
-  <?php include("../include/header.html");?>
-  <form method="POST">
+<body class="container bg-secondary">
+  <?php include("../home/homeHeader.html");?>
+  <form method="POST" class="bg-white">
     <table class="table border border-dark rounded">
       <thead class="thead-dark">
         <tr>
@@ -75,7 +75,7 @@ if (isset($_SESSION['formNo'])) {
       </tbody>
     </table>
     <?php echo $rateCheckErr2;?>
-    <div class="form-row">
+    <div class="form-row container">
       <div class="form-group col-lg">
         <label for="loanAmount">Loan amount:</label>
         <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">Ksh.</span></div><input class="form-control <?php echo $loanAmountErr;?>" type="number" name="loanAmount" aria-label="With textarea" value="<?php echo $loanAmount;?>"></div>

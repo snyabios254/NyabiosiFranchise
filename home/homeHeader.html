@@ -1,4 +1,4 @@
-<header>
+<header class="bg-white">
   <img class="img-fluid center" style="" src="../images/credolinkLogo.jpg">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="#"></a>
@@ -25,12 +25,12 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link disabled" href="#">Records(Financial)</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0" method="POST">
+        <input class="form-control mr-sm-2 <?php echo $searchErr;?>" type="search" placeholder="Search" name="search" value="<?php echo $search;?>" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>
       </form>
     </div>
   </nav>

@@ -10,13 +10,16 @@
 <body class="bg-secondary container bg-color-white">
   <?php
   include("../loanForms/currentLoansSql.php");
-  include("borrower.php");?>
+  include("../home/borrower.php");
+  ?>
   <div class="bg-light rounded border border-info">
-    <?php include("homeHeader.html");?><br>
+    <?php include("../home/homeHeader.html");?><br>
+    <!-- <script type="text/javascript" src="javas/scroll.js">
+    </script> -->
     <div class="container">
     <div class="row">
       <div class="col-lg-2">
-        <div class="btn-group-vertical" role="group" aria-label="...">
+        <div class="btn-group-vertical btn-block" role="group" aria-label="...">
           <a href="../loanForms/currentLoans.php" type="button" class="btn btn-block btn-outline-dark">Current loans</a>
           <a href="../loanForms/clearedLoans.php" type="button" class="btn btn-block btn-outline-dark">Cleared loans</a>
           <a href="../loanForms/overdueLoans.php" type="button" class="btn btn-block btn-outline-dark">Overdue loans</a>
@@ -24,7 +27,15 @@
         </div>
       </div>
       <div class="col-lg-10 row">
-        <?php echo $allBorrowers;?>
+        <?php
+
+        if (!isset($_POST['submit']) || empty($search)) {
+          echo $searchErr1;
+          echo $allBorrowers;
+        } else {
+          echo $searchRes;
+        }
+        ?>
       </div>
     </div></div><hr>
     <footer style="padding: 0.5rem;">

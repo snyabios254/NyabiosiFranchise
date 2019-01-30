@@ -13,13 +13,50 @@
 <script src="bootstrap-4.1.2-dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
-<body class="container jumbotron">
+<body class="bg-secondary container bg-color-white">
   <?php
   include("include/conn.php");
-  include("include/header.html");
   include("include/firstPage.php");
   include("include/connDB.php");?>
-  <form method="POST">
+  <header class="bg-white">
+    <img class="img-fluid center" style="" src="images/credolinkLogo.jpg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home/home.php">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index1.php">New record</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" disabled type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" disabled type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+<div class="bg-white">
+  <form method="POST" class="container"><br>
     <div class="form-row"><?php echo $dbaseErr;?>
       <div class="form-group col-lg-4">
         <label for="firstName">First Name: </label>
@@ -62,7 +99,7 @@
 
         <div class="input-group input-group-default mb-3"><div class="input-group-prepend"><span class="input-group-text">07</span></div><input type="varchar" value="<?php echo $phoneNo;?>" class="form-control" name="phoneNo" id="phoneNo"></div><?php echo $phoneNoErr;?></div>
       </div>
-    </div>
+
     <div class="form-row">
       <div class="form-group col-lg-4">
         <label for="employer">Employer: </label>
@@ -88,8 +125,10 @@
           <label class="custom-control-label" for="single">Single</label>
         </div>
       </div><br><?php echo $maritalStatusErr;?>
-    </div>
-    <button type="submit" name="submitForm1" class="btn btn-defualt btn-outline-dark float-right">Next  >></button>
+      <button type="submit" name="submitForm1" class="btn btn-defualt btn-outline-dark float-right">Next  >></button>
+    </div><br>
   </form>
+  </div>
+</div>
 </body>
 </html>

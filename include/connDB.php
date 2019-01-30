@@ -79,4 +79,4 @@ if (!empty($firstName) && !empty($employer) && !empty($occupation) && !empty($se
            } else {echo 'error occured';}
          }
        } else {echo 'nah'.mysqli_error($conn);}}
-  } else {echo "something is wrong".mysqli_error($conn);}} else {echo 'nuh pass'.mysqli_error($conn);}
+  } else {mysqli_error($conn);}} else {mysqli_error($conn);}

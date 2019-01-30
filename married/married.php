@@ -15,8 +15,8 @@ include("../include/bootstrapLinks.html");
 include("../include/conn.php");
 ?>
 </head>
-<body class="jumbotron container">
-  <?php include("../include/header.html");
+<body class="jumbotron container bg-white">
+  <?php include("../home/homeHeader.html");
   include("../single/singleDB.php");
   include("marriedConn.php");
   ?>

@@ -26,73 +26,73 @@ if (mysqli_query($conn, $loanTable) && !empty($_POST['loanAmount'])) {
       if (isset($_POST['finish'])) {
         include("insertStatements.php");
         if ($assets1NumRows > 0) {
-          echo 'numrows greater that zero'.'  '.$assets1NumRows;
+          #echo 'numrows greater that zero'.'  '.$assets1NumRows;
         } else {
           $assets1Errors = '';
           if (!empty($_POST['assets1']) && !empty($_POST['year1']) && !empty($_POST['serialNo1']) && !empty($_POST['buyPrice1']) && !empty($_POST['sellPrice1']) && !empty($_POST['loanAmount'])) {
             if (mysqli_query($conn, $assets1Sql)) {
-              echo 'data entered';
+              #echo 'data entered';
             } else {
-              echo "not entered".mysqli_error($conn);
+              #echo "not entered".mysqli_error($conn);
             }
-          } else {echo 'not entered one';}
+          } else {}
         }
         /*********************************/
         if ($assets2NumRows > 0) {
-          echo 'numrows greater that zero'.'  '.$assets2NumRows;
+          #echo 'numrows greater that zero'.'  '.$assets2NumRows;
         } else {
           $assets2Errors = '';
           if ($asset2Errors = !empty($_POST['assets2']) && !empty($_POST['year2']) && !empty($_POST['serialNo2']) && !empty($_POST['buyPrice2']) && !empty($_POST['sellPrice2']) && !empty($_POST['loanAmount'])) {
             if (mysqli_query($conn, $assets2Sql)) {
-              echo 'data entered';
+              #echo 'data entered';
             } else {
-              echo "not entered".mysqli_error($conn);
+              #echo "not entered".mysqli_error($conn);
             }
-          } else {echo 'not entered one';}
+          } else {}
         }
         /*****************************************/
         if ($assets3NumRows > 0) {
-          echo 'numrows greater that zero'.'  '.$assets3NumRows;
+          #echo 'numrows greater that zero'.'  '.$assets3NumRows;
         } else {
           $assets3Errors = '';
           if ($asset3Errors = !empty($_POST['assets3']) && !empty($_POST['year3']) && !empty($_POST['serialNo3']) && !empty($_POST['buyPrice3']) && !empty($_POST['sellPrice3']) && !empty($_POST['loanAmount'])) {
             if (mysqli_query($conn, $assets3Sql)) {
-              echo 'data entered';
+              #echo 'data entered';
             } else {
-              echo "not entered".mysqli_error($conn);
+              #echo "not entered".mysqli_error($conn);
             }
-          } else {echo 'not entered one';}
+          } else {}
         }
         /************************************/
         if ($assets4NumRows > 0) {
-          echo 'numrows greater that zero'.'  '.$assets4NumRows;
+          #echo 'numrows greater that zero'.'  '.$assets4NumRows;
         } else {
           $assets4Errors = '';
           if (!empty($_POST['assets4']) && !empty($_POST['year4']) && !empty($_POST['serialNo4']) && !empty($_POST['buyPrice4']) && !empty($_POST['sellPrice4']) && !empty($_POST['loanAmount'])) {
             if (mysqli_query($conn, $assets4Sql)) {
-              echo 'data entered';
+              #echo 'data entered';
             } else {
-              echo "not entered".mysqli_error($conn);
+              #echo "not entered".mysqli_error($conn);
             }
-          } else {echo 'not entered one';}
+          } else {}
         }
         /***************************************/
         if ($assets5NumRows > 0) {
-          echo 'numrows greater that zero'.'  '.$assets5NumRows;
+          #echo 'numrows greater that zero'.'  '.$assets5NumRows;
         } else {
           $assets5Errors = '';
           if ($asset5Errors = !empty($_POST['assets5']) && !empty($_POST['year5']) && !empty($_POST['serialNo5']) && !empty($_POST['buyPrice5']) && !empty($_POST['sellPrice5']) && !empty($_POST['loanAmount'])) {
             if (mysqli_query($conn, $assets5Sql)) {
-              echo 'data entered';
+              #echo 'data entered';
             } else {
-              echo "not entered".mysqli_error($conn);
+              #echo "not entered".mysqli_error($conn);
             }
-          } else {echo 'not entered one';}
+          } else {}
         }
         header("location: ../home/home.php");
       }
     } else {
-      echo 'not entere here';
+      #echo 'not entere here';
       $rateCheckErr2 = $rateCheckErr = '';
       $rateCheckErr = 'alert alert-danger';
       $rateCheckErr2 .= '
@@ -105,4 +105,4 @@ if (mysqli_query($conn, $loanTable) && !empty($_POST['loanAmount'])) {
       ';
     }
   // } else {echo 'nop nop';}
-} else {echo 'in the beginning there was a problem';}
+} else {}
