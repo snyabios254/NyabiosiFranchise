@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['loginPass'])) {
+  #echo 'it is set yall';
+  $password = $_SESSION['loginPass'];
+} else {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
